@@ -1,5 +1,6 @@
 #include "ofApp.h"
 
+#define SOL_LUAJIT 1
 #include <sol/sol.hpp>
 
 //--------------------------------------------------------------
@@ -9,7 +10,9 @@ void ofApp::setup(){
     sol::state lua;
     
     lua.open_libraries(sol::lib::base);
-    lua.script("print(_VERSION)");
+    
+//    lua.script("print(_VERSION)");
+    lua.script_file(ofToDataPath("lua_version.lua"));
 
     int x = 0;
     lua.set_function("beep", [&x]{ ++x; });
