@@ -3,13 +3,21 @@
 #define SOL_LUAJIT 1
 #include <sol/sol.hpp>
 
+// NOTE: static is just for convenience. you can place this in ofApp.h as member variable.
+static sol::state lua;
+
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofLogToConsole();
     
-    sol::state lua;
-    
     lua.open_libraries(sol::lib::base);
+
+    lua.set_function("drawBitmapString", [](const std::string& text, int x, int y) {
+        ofDrawBitmapString(text, x, y);
+    });
+    lua.set_function("drawRectangle", [](int x, int y, int w, int h) {
+        ofDrawRectangle(x, y, w, h);
+    });
     
 //    lua.script("print(_VERSION)");
     lua.script_file(ofToDataPath("lua_version.lua"));
@@ -26,6 +34,8 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    lua.script("drawBitmapString('hello world', 20, 20)");
+    lua.script("drawRectangle(20, 50, 100, 100)");
 }
 
 //--------------------------------------------------------------
