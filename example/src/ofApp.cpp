@@ -1,7 +1,5 @@
 #include "ofApp.h"
 
-#include <lua/lua.hpp>
-
 #include <sol/sol.hpp>
 
 //--------------------------------------------------------------
@@ -9,6 +7,10 @@ void ofApp::setup(){
     ofLogToConsole();
     
     sol::state lua;
+    
+    lua.open_libraries(sol::lib::base);
+    lua.script("print(_VERSION)");
+
     int x = 0;
     lua.set_function("beep", [&x]{ ++x; });
     lua.script("beep()");
