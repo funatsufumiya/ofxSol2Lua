@@ -1,0 +1,13 @@
+# ofxSol2Lua
+
+Lua with [Sol2](https://github.com/ThePhD/sol2) for openFrameworks
+
+- Lua version: currently using [v5.4.7](https://github.com/lua/lua/tree/v5.4.7)
+- Tested with oF 0.12.0.
+
+## LICENSE
+
+- lua: [MIT License](https://www.lua.org/license.html)
+- sol2: [MIT License](https://github.com/ThePhD/sol2/blob/develop/LICENSE.txt)
+
+NOTE: No specific copyright is claimed for this repository changes (for oF binding), but the [Apache License 2.0](LICENSE_APACHE) or [MIT License](LICENSE_MIT) can be applied if necessary.
