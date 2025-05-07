@@ -25,6 +25,10 @@ common:
 	ADDON_INCLUDES += sol2/include
 	ADDON_INCLUDES += libs/luajit/include
 
+# NOTE: uncomment the following to use Lua instead of LuaJIT
+# NOTE: and check much much bottom "NOTE" comment, if you use Lua instead of LuaJIT
+# # UNCOMMENT BEGIN ---
+
 	# ADDON_INCLUDES += lua/include
 
 	# ADDON_SOURCES += lua/src/lapi.c
@@ -60,6 +64,8 @@ common:
 	# ADDON_SOURCES += lua/src/lutf8lib.c
 	# ADDON_SOURCES += lua/src/lvm.c
 	# ADDON_SOURCES += lua/src/lzio.c
+
+# # UNCOMMENT END ---
 
 	# ADDON_SOURCES_EXCLUDE += libs/include/xxx/utf8.h
 	# ADDON_SOURCES_EXCLUDE += libs/include/xxx/time.h
@@ -102,3 +108,35 @@ common:
 	# when parsing the file system looking for libraries exclude this for all or
 	# a specific platform
 	# ADDON_LIBS_EXCLUDE =
+
+# NOTE: enable ADDONS_CLAGS if you use Lua instead of LuaJIT
+
+linux64:
+	# ADDON_CFLAGS += -DLUA_USE_LINUX
+	
+linux:
+	# ADDON_CFLAGS += -DLUA_USE_LINUX
+	
+msys2:
+	# ADDON_CFLAGS += -DLUA_USE_WINDOWS
+	
+vs:
+	# ADDON_CFLAGS += -DLUA_USE_WINDOWS
+	
+linuxarmv6l:
+	# ADDON_CFLAGS += -DLUA_USE_LINUX
+	
+linuxarmv7l:
+	# ADDON_CFLAGS += -DLUA_USE_LINUX
+
+android/armeabi:
+	# ADDON_CFLAGS += -DLUA_USE_ANDROID
+
+android/armeabi-v7a:
+	# ADDON_CFLAGS += -DLUA_USE_ANDROID
+
+osx:
+	# ADDON_CFLAGS += -DLUA_USE_MACOSX
+
+ios:
+	# ADDON_CFLAGS += -DLUA_USE_IOS
