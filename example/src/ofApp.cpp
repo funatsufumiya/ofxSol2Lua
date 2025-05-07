@@ -1,5 +1,7 @@
 #include "ofApp.h"
 
+#include <lua/lua.hpp>
+
 #include <sol/sol.hpp>
 
 //--------------------------------------------------------------
