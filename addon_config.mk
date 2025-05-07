@@ -23,6 +23,7 @@ meta:
 
 common:
 	ADDON_INCLUDES = lua/include
+	ADDON_INCLUDES += sol2/include
 
 	ADDON_SOURCES += lua/src/lapi.c
 	ADDON_SOURCES += lua/src/lauxlib.c
