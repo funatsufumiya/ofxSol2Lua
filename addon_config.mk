@@ -22,7 +22,8 @@ meta:
 	ADDON_URL = https://github.com/funatsufumiya/ofxSol2Lua
 
 common:
-	ADDON_INCLUDES += sol2/include
+	ADDON_INCLUDES =
+	ADDON_INCLUDES += libs/sol2/include
 	ADDON_INCLUDES += libs/luajit/include
 
 # NOTE: uncomment the following to use Lua instead of LuaJIT
