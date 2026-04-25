@@ -110,7 +110,7 @@ common:
 	# a specific platform
 	# ADDON_LIBS_EXCLUDE =
 
-# NOTE: enable ADDONS_CLAGS if you use Lua instead of LuaJIT
+# NOTE: enable ADDONS_CFLAGS if you use Lua instead of LuaJIT
 
 linux64:
 	# ADDON_CFLAGS += -DLUA_USE_LINUX
