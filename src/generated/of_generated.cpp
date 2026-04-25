@@ -130,8 +130,6 @@ void ofxSol2Lua::setOFGeneratedBindings(const std::shared_ptr<sol::state>& lua){
     lua->set_function("ofGetLogLevelName", [](ofLogLevel level, bool pad){ return ofGetLogLevelName(level, pad); });
     // ofLog.h, LINE 245
     lua->set_function("ofLogToConsole", [](){  ofLogToConsole(); });
-    // ofLog.h, LINE 252
-    lua->set_function("ofLogToDebugView", [](){  ofLogToDebugView(); });
     // ofLog.h, LINE 262
     lua->set_function("ofSetLoggerChannel", [](std::shared_ptr<ofBaseLoggerChannel> loggerChannel){  ofSetLoggerChannel(loggerChannel); });
     // ofLog.h, LINE 265
