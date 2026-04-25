@@ -26,6 +26,10 @@ common:
 	ADDON_INCLUDES += libs/sol2/include
 	ADDON_INCLUDES += libs/luajit/include
 
+	ADDON_INCLUDES += src
+	ADDON_SOURCES += src/ofxSol2Lua.h
+	ADDON_SOURCES += src/ofxSol2Lua.cpp
+
 # NOTE: uncomment the following to use Lua instead of LuaJIT
 # NOTE: and check much much bottom "NOTE" comment, if you use Lua instead of LuaJIT
 # # UNCOMMENT BEGIN ---
