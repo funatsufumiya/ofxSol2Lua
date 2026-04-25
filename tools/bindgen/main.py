@@ -43,7 +43,7 @@ target_filenames = [
 ]
 
 ignore_functions = {
-    "TrussC.h": [
+    "ofMain.h": [
         "setup",
         "operator|",
         "operator&",
