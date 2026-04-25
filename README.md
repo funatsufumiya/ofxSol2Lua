@@ -7,7 +7,7 @@ Lua with [Sol2](https://github.com/ThePhD/sol2) for openFrameworks
 
 - Lua version: currently using LuaJIT 2.1 binary, but you can use Lua [v5.4.7](https://github.com/lua/lua/tree/v5.4.7) (included sources)
     - **WARNING**: Currently containing LuaJIT win_x64/mac_x64/mac_arm64/linux_x64 binaries, but not other platforms.
-- Sol2 version: currently using [v3.3.0](https://github.com/ThePhD/sol2/releases/tag/v3.3.0)
+- Sol2 version: currently using [v3.5.0](https://github.com/ThePhD/sol2/)
 - Tested with oF 0.12.0 (win_x64/mac_arm64/linux_x64)
 
 ## LICENSE
