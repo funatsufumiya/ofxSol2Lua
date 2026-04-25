@@ -56,13 +56,13 @@ ignore_functions = {
     ],
     "ofLog.h" : [
         "operator*",
-        "ofGetLogger"
+        "ofGetLogger",
+        "ofLogToFile"
     ]
 }
 
 ignore_namespaces = {
     "ofMain.h": [
-        "internal"
     ]
 }
 
@@ -121,7 +121,7 @@ def visitNode(node, ns="", clazz=""):
             if clazz_id in ignore_classes[filename]:
                 is_ignore = True
 
-        id = clazz_id + "#" + function_name
+        id = function_name if clazz_id == "" else clazz_id + "#" + function_name
 
         # print(filename + f" / {id}")
 
@@ -222,6 +222,7 @@ def bindFunctions(outfile, fn_map):
 
                 # print("FUNCTION_DECL", obj)
                 outfile.write(f"    // {fn["filename"]}, LINE {fn["line_number"]}\n")
+                # outfile.write(f"    // id: {fn["id"]}\n")
 
                 ret = ""
                 if fn["return_type"] != "void":
@@ -286,13 +287,36 @@ def bindFunctions(outfile, fn_map):
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument("-of", "--of_root", help="OF_ROOT")
     parser.add_argument("filename", help="Input file")
     args = parser.parse_args()
+
+    if args.of_root is None or args.of_root == "":
+        print("[Error] --of_root (-of) must be set!")
+        exit()
+
+    of_root = args.of_root
+    of_lib_root = os.path.join(of_root, "libs/openFrameworks")
+
+    # print(f"of_lib_root: {of_lib_root}")
 
     input_filename = os.path.basename(args.filename)
 
     index = Index.create()
-    tree = index.parse(args.filename, args=["-x", "c++"])
+    tree = index.parse(args.filename, args=["-x", "c++",
+        "-I", f"{of_lib_root}/math",
+        "-I", f"{of_lib_root}/3d",
+        "-I", f"{of_lib_root}/app",
+        "-I", f"{of_lib_root}/communication",
+        "-I", f"{of_lib_root}/events",
+        "-I", f"{of_lib_root}/gl",
+        "-I", f"{of_lib_root}/graphics",
+        "-I", f"{of_lib_root}/math",
+        "-I", f"{of_lib_root}/sound",
+        "-I", f"{of_lib_root}/types",
+        "-I", f"{of_lib_root}/utils",
+        "-I", f"{of_lib_root}/video"
+    ])
 
     visitNode(tree.cursor)
 
