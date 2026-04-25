@@ -48,6 +48,8 @@ void ofxSol2Lua::setTypeBindings(const std::shared_ptr<sol::state>& lua){
     using Vec3 = ofVec3f;
     using Vec4 = ofVec4f;
     using Mat4 = ofMatrix4x4;
+    using Quaternion = ofQuaternion;
+    using Color = ofColor;
 
     sol::usertype<Vec2> vec2_type = lua->new_usertype<Vec2>("ofVec2f",
         sol::constructors<Vec2(), Vec2(float, float), Vec2(const Vec2&)>(),
@@ -137,7 +139,7 @@ void ofxSol2Lua::setTypeBindings(const std::shared_ptr<sol::state>& lua){
     vec3_type["distance"] = &Vec3::distance;
     vec3_type["distanceSquared"] = &Vec3::distanceSquared;
 
-    sol::usertype<Vec4> vec4_type = lua->new_usertype<Vec4>("Vec4",
+    sol::usertype<Vec4> vec4_type = lua->new_usertype<Vec4>("ofVec4f",
         sol::constructors<Vec4(), Vec4(float, float, float, float), Vec4(const Vec3&), Vec4(const Vec4&)>(),
         sol::meta_function::addition,
         sol::overload(
@@ -164,6 +166,57 @@ void ofxSol2Lua::setTypeBindings(const std::shared_ptr<sol::state>& lua){
     vec4_type["normalized"] = &Vec4::normalized;
     vec4_type["normalize"] = &Vec4::normalize;
     vec4_type["dot"] = &Vec4::dot;
+
+    sol::usertype<Quaternion> quat_type = lua->new_usertype<Quaternion>("ofQuaternion",
+        sol::constructors<Quaternion(), Quaternion(float, float, float, float), Quaternion(const Quaternion&)>(),
+        sol::meta_function::multiplication,
+        [](const Quaternion& a, const Quaternion& b){ return a * b; }
+    );
+    quat_type["w"] = [](Quaternion& q){ return q.w(); };
+    quat_type["x"] = [](Quaternion& q){ return q.x(); };
+    quat_type["y"] = [](Quaternion& q){ return q.y(); };
+    quat_type["z"] = [](Quaternion& q){ return q.z(); };
+    quat_type["asVec4"] = &Quaternion::asVec4;
+    quat_type["asVec3"] = &Quaternion::asVec3;
+    quat_type["length"] = &Quaternion::length;
+    quat_type["normalize"] = &Quaternion::normalize;
+    quat_type["slerp"] = &Quaternion::slerp;
+
+    sol::usertype<Mat4> mat4_type = lua->new_usertype<Mat4>("ofMatix4x4",
+        sol::constructors<Mat4(),
+            Mat4(float m00, float m01, float m02, float m03,
+                 float m10, float m11, float m12, float m13,
+                 float m20, float m21, float m22, float m23,
+                 float m30, float m31, float m32, float m33),
+            Mat4(const Mat4&)>(),
+        sol::meta_function::multiplication,
+        sol::overload(
+           [](const Mat4& a, const Mat4& b){ return a * b; },
+           [](const Mat4& a, const Vec3& b){ return a * b; },
+           [](const Mat4& a, const Vec4& b){ return a * b; }
+        )
+    );
+    
+    sol::usertype<Color> color_type = lua->new_usertype<Color>("ofColor",
+        sol::constructors<Color(), Color(float), Color(float, float), Color(float, float, float), Color(float, float, float, float), Color(const Color&)>(),
+        sol::meta_function::addition,
+        [](const Color& a, const Color& b){ return a + b; },
+        sol::meta_function::subtraction,
+        [](const Color& a, const Color& b){ return a - b; },
+        sol::meta_function::multiplication,
+        [](const Color& a, float b){ return a * b; },
+        sol::meta_function::division,
+        [](const Color& a, float b){ return a / b; }
+    );
+
+    color_type["r"] = &Color::r;
+    color_type["g"] = &Color::g;
+    color_type["b"] = &Color::b;
+    color_type["a"] = &Color::a;
+
+    color_type["fromHex"] = &Color::fromHex;
+    color_type["fromHsb"] = &Color::fromHsb;
+    color_type["lerp"] = &Color::lerp;
 }
 
 void ofxSol2Lua::setMathBindings(const std::shared_ptr<sol::state>& lua){
