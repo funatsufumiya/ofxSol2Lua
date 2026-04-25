@@ -69,7 +69,8 @@ ignore_functions = {
     "ofLog.h" : [
         "operator*",
         "ofGetLogger",
-        "ofLogToFile"
+        "ofLogToFile",
+        "ofLogToDebugView"
     ]
 }
 
