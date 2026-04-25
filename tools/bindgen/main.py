@@ -44,13 +44,6 @@ target_filenames = [
 
 ignore_functions = {
     "ofMain.h": [
-        "setup",
-        "operator|",
-        "operator&",
-
-        # makes errors on binding (reference problem etc):
-        # "intersectRect",
-        # "getBitmapStringBounds"
     ],
     "ofMath.h" : [
         "operator*"
