@@ -29,6 +29,7 @@ common:
 	ADDON_INCLUDES += src
 	ADDON_SOURCES += src/ofxSol2Lua.h
 	ADDON_SOURCES += src/ofxSol2Lua.cpp
+	ADDON_SOURCES += src/generated/of_generated.cpp
 
 # NOTE: uncomment the following to use Lua instead of LuaJIT
 # NOTE: and check much much bottom "NOTE" comment, if you use Lua instead of LuaJIT

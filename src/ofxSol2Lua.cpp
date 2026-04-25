@@ -28,7 +28,7 @@ std::shared_ptr<sol::state> ofxSol2Lua::getLuaState(){
 }
 
 void ofxSol2Lua::setBindings(const std::shared_ptr<sol::state>& lua){
-    // setOFGeneratedBindings(lua);
+    setOFGeneratedBindings(lua);
     // setTypeBindings(lua);
     // setConstBindings(lua);
     // setColorConstBindings(lua);
