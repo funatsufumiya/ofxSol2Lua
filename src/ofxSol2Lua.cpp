@@ -136,6 +136,34 @@ void ofxSol2Lua::setTypeBindings(const std::shared_ptr<sol::state>& lua){
     vec3_type["cross"] = &Vec3::cross;
     vec3_type["distance"] = &Vec3::distance;
     vec3_type["distanceSquared"] = &Vec3::distanceSquared;
+
+    sol::usertype<Vec4> vec4_type = lua->new_usertype<Vec4>("Vec4",
+        sol::constructors<Vec4(), Vec4(float, float, float, float), Vec4(const Vec3&), Vec4(const Vec4&)>(),
+        sol::meta_function::addition,
+        sol::overload(
+           [](const Vec4& a, const Vec4& b){ return a + b; },
+           [](const Vec4& a, float b){ return a + b; }
+        ),
+        sol::meta_function::subtraction,
+        sol::overload(
+           [](const Vec4& a, const Vec4& b){ return a - b; },
+           [](const Vec4& a, float b){ return a - b; }
+        ),
+        sol::meta_function::multiplication,
+        [](const Vec4& a, float b){ return a * b; },
+        sol::meta_function::division,
+        [](const Vec4& a, float b){ return a / b; }
+    );
+    vec4_type["x"] = &Vec4::x;
+    vec4_type["y"] = &Vec4::y;
+    vec4_type["z"] = &Vec4::z;
+    vec4_type["w"] = &Vec4::w;
+
+    vec4_type["length"] = &Vec4::length;
+    vec4_type["lengthSquared"] = &Vec4::lengthSquared;
+    vec4_type["normalized"] = &Vec4::normalized;
+    vec4_type["normalize"] = &Vec4::normalize;
+    vec4_type["dot"] = &Vec4::dot;
 }
 
 void ofxSol2Lua::setMathBindings(const std::shared_ptr<sol::state>& lua){
