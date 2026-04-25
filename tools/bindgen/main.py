@@ -36,6 +36,7 @@ after = """
 
 target_filenames = [
     "ofMain.h",
+    "ofGraphics.h",
     "ofMath.h",
     "ofPrimitives.h",
     "of3DGraphics.h",
@@ -44,6 +45,17 @@ target_filenames = [
 
 ignore_functions = {
     "ofMain.h": [
+    ],
+    "ofGraphics.h": [
+        "setup",
+        "operator*",
+
+        # makes errors
+        "ofCurveVertices",
+        "ofVertices",
+
+        "ofSetupScreenOrtho",
+        "ofSetupScreenPerspective",
     ],
     "ofMath.h" : [
         "operator*"
@@ -61,17 +73,23 @@ ignore_functions = {
     ]
 }
 
+ignore_function_details = {
+    "ofGraphics.h": {
+    }
+}
+
 ignore_namespaces = {
     "ofMain.h": [
     ]
 }
 
 ignore_classes = {
-    "ofMain.h": []
+    "ofMain.h": [
+    ]
 }
 
 additional_overloads = {
-    "ofMain.h": {
+    "ofGraphics.h": {
         "ofSetColor": [
             "[](float r, float g, float b){  ofSetColor(r, g, b); }"
         ],
@@ -265,6 +283,19 @@ def bindFunctions(outfile, fn_map):
                     ret = "return"
 
                 id = name if ns == "" else ns + "::" + name
+
+                arg_pairs_str = ", ".join(arg_pairs)
+                is_ignore_override = False
+
+                if filename in ignore_function_details:
+                    if fn_name in ignore_function_details[filename]:
+                        if arg_pairs_str in ignore_function_details[filename]:
+                            is_ignore_override = True
+                
+                if is_ignore_override:
+                    i += 1
+                    continue
+
                 if len(arg_names) == 0:
                     overloads.append(f"[](){lp} {ret} {id}(); {rp}")
                 else:
@@ -315,7 +346,8 @@ def main():
         "-I", f"{of_lib_root}/sound",
         "-I", f"{of_lib_root}/types",
         "-I", f"{of_lib_root}/utils",
-        "-I", f"{of_lib_root}/video"
+        "-I", f"{of_lib_root}/video",
+        "-I", f"{of_root}/libs/glm/include"
     ])
 
     visitNode(tree.cursor)
