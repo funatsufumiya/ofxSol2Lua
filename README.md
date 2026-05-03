@@ -7,6 +7,13 @@ Lua with [Sol2](https://github.com/ThePhD/sol2) for openFrameworks
 - Sol2 version: currently using [v3.5.0](https://github.com/ThePhD/sol2/)
 - Tested with oF 0.12.0 (win_x64/mac_arm64/linux_x64)
 
+## Binding status
+
+### Dones
+
+- cmath, ofMath.h
+- ofGraphics.h
+
 ## Development 
 
 ### bindgen
