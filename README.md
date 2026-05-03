@@ -21,6 +21,8 @@ Lua with [Sol2](https://github.com/ThePhD/sol2) for openFrameworks
 
 ### bindgen
 
+See [tools/bindgen/README.md](./tools/bindgen/README.md) for detail.
+
 ```bash
 $ cd tools/bindgen
 # $ pip install uv # only first time
