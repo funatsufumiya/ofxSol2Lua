@@ -11,8 +11,11 @@ Lua with [Sol2](https://github.com/ThePhD/sol2) for openFrameworks
 
 ### Dones
 
-- cmath, ofMath.h
+- cmath (common ones), ofMath.h
 - ofGraphics.h
+- ofPrimitives.h
+- of3DGraphics.h
+- ofLog.h
 
 ## Development 
 
