@@ -38,5 +38,6 @@ $ cp of_generated.cpp ../../src/generated
 ## LICENSE
 
 - lua: [MIT License](https://www.lua.org/license.html)
+- LuaJIT: [MIT License](https://github.com/LuaJIT/LuaJIT/blob/v2.1/COPYRIGHT)
 - sol2: [MIT License](https://github.com/ThePhD/sol2/blob/develop/LICENSE.txt)
 - ofxSol2Lua: [Apache License 2.0](LICENSE_APACHE) and/or [MIT License](LICENSE_MIT)
