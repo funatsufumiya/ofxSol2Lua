@@ -1,2 +1,10 @@
 .DS_Store
 vcpkg
+example*/.vs
+example*/bin/*.dll
+example*/bin/*.pdb
+example*/bin/*.exe
+example*/*.sln
+example*/*.vcxproj*
+example*/obj
+example*/icon.rc
