@@ -17,6 +17,10 @@ Lua with [Sol2](https://github.com/ThePhD/sol2) for openFrameworks
 - of3DGraphics.h
 - ofLog.h
 
+## Known Issues
+
+- Default values of methods are not treated perfectly now. So you may need `ofSetColor(r, g, b, a)` instead of `ofSetColor(r, g, b)`.
+
 ## Development 
 
 ### bindgen
