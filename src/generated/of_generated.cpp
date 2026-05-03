@@ -134,6 +134,132 @@ void ofxSol2Lua::setOFGeneratedBindings(const std::shared_ptr<sol::state>& lua){
     lua->set_function("ofSetLoggerChannel", [](std::shared_ptr<ofBaseLoggerChannel> loggerChannel){  ofSetLoggerChannel(loggerChannel); });
     // ofLog.h, LINE 265
     lua->set_function("ofGetLoggerChannel", [](){ return ofGetLoggerChannel(); });
+    // of3dGraphics.h, LINE 23
+    lua->set_function("ofSetPlaneResolution", [](int columns, int rows){  ofSetPlaneResolution(columns, rows); });
+    // of3dGraphics.h, LINE 29
+    lua->set_function("ofGetPlaneResolution", [](){ return ofGetPlaneResolution(); });
+    // of3dGraphics.h, LINE 40
+    // of3dGraphics.h, LINE 52
+    // of3dGraphics.h, LINE 62
+    // of3dGraphics.h, LINE 67
+    lua->set_function("ofDrawPlane", sol::overload(
+        [](float x, float y, float width, float height){  ofDrawPlane(x, y, width, height); },
+        [](float x, float y, float z, float width, float height){  ofDrawPlane(x, y, z, width, height); },
+        [](const glm::vec3 & position, float width, float height){  ofDrawPlane(position, width, height); },
+        [](float width, float height){  ofDrawPlane(width, height); }
+    ));
+    // of3dGraphics.h, LINE 79
+    lua->set_function("ofSetSphereResolution", [](int res){  ofSetSphereResolution(res); });
+    // of3dGraphics.h, LINE 83
+    lua->set_function("ofGetSphereResolution", [](){ return ofGetSphereResolution(); });
+    // of3dGraphics.h, LINE 94
+    // of3dGraphics.h, LINE 105
+    // of3dGraphics.h, LINE 113
+    // of3dGraphics.h, LINE 122
+    lua->set_function("ofDrawSphere", sol::overload(
+        [](float x, float y, float radius){  ofDrawSphere(x, y, radius); },
+        [](float x, float y, float z, float radius){  ofDrawSphere(x, y, z, radius); },
+        [](const glm::vec3 & position, float radius){  ofDrawSphere(position, radius); },
+        [](float radius){  ofDrawSphere(radius); }
+    ));
+    // of3dGraphics.h, LINE 124
+    // of3dGraphics.h, LINE 125
+    // of3dGraphics.h, LINE 126
+    // of3dGraphics.h, LINE 127
+    lua->set_function("ofSphere", sol::overload(
+        [](float x, float y, float radius){  ofSphere(x, y, radius); },
+        [](float x, float y, float z, float radius){  ofSphere(x, y, z, radius); },
+        [](const glm::vec3 & position, float radius){  ofSphere(position, radius); },
+        [](float radius){  ofSphere(radius); }
+    ));
+    // of3dGraphics.h, LINE 136
+    lua->set_function("ofSetIcoSphereResolution", [](int res){  ofSetIcoSphereResolution(res); });
+    // of3dGraphics.h, LINE 141
+    lua->set_function("ofGetIcoSphereResolution", [](){ return ofGetIcoSphereResolution(); });
+    // of3dGraphics.h, LINE 152
+    // of3dGraphics.h, LINE 163
+    // of3dGraphics.h, LINE 172
+    // of3dGraphics.h, LINE 181
+    lua->set_function("ofDrawIcoSphere", sol::overload(
+        [](float x, float y, float z, float radius){  ofDrawIcoSphere(x, y, z, radius); },
+        [](float x, float y, float radius){  ofDrawIcoSphere(x, y, radius); },
+        [](const glm::vec3 & position, float radius){  ofDrawIcoSphere(position, radius); },
+        [](float radius){  ofDrawIcoSphere(radius); }
+    ));
+    // of3dGraphics.h, LINE 193
+    lua->set_function("ofSetCylinderResolution", [](int radiusSegments, int heightSegments, int capSegments){  ofSetCylinderResolution(radiusSegments, heightSegments, capSegments); });
+    // of3dGraphics.h, LINE 203
+    lua->set_function("ofGetCylinderResolution", [](){ return ofGetCylinderResolution(); });
+    // of3dGraphics.h, LINE 216
+    // of3dGraphics.h, LINE 229
+    // of3dGraphics.h, LINE 241
+    // of3dGraphics.h, LINE 250
+    lua->set_function("ofDrawCylinder", sol::overload(
+        [](float x, float y, float radius, float height){  ofDrawCylinder(x, y, radius, height); },
+        [](float x, float y, float z, float radius, float height){  ofDrawCylinder(x, y, z, radius, height); },
+        [](const glm::vec3 & position, float radius, float height){  ofDrawCylinder(position, radius, height); },
+        [](float radius, float height){  ofDrawCylinder(radius, height); }
+    ));
+    // of3dGraphics.h, LINE 264
+    lua->set_function("ofSetConeResolution", [](int radiusSegments, int heightSegments, int capSegments){  ofSetConeResolution(radiusSegments, heightSegments, capSegments); });
+    // of3dGraphics.h, LINE 279
+    lua->set_function("ofGetConeResolution", [](){ return ofGetConeResolution(); });
+    // of3dGraphics.h, LINE 292
+    // of3dGraphics.h, LINE 304
+    // of3dGraphics.h, LINE 315
+    // of3dGraphics.h, LINE 325
+    lua->set_function("ofDrawCone", sol::overload(
+        [](float x, float y, float z, float radius, float height){  ofDrawCone(x, y, z, radius, height); },
+        [](float x, float y, float radius, float height){  ofDrawCone(x, y, radius, height); },
+        [](const glm::vec3 & position, float radius, float height){  ofDrawCone(position, radius, height); },
+        [](float radius, float height){  ofDrawCone(radius, height); }
+    ));
+    // of3dGraphics.h, LINE 327
+    // of3dGraphics.h, LINE 328
+    // of3dGraphics.h, LINE 329
+    // of3dGraphics.h, LINE 330
+    lua->set_function("ofCone", sol::overload(
+        [](float x, float y, float z, float radius, float height){  ofCone(x, y, z, radius, height); },
+        [](float x, float y, float radius, float height){  ofCone(x, y, radius, height); },
+        [](const glm::vec3 & position, float radius, float height){  ofCone(position, radius, height); },
+        [](float radius, float height){  ofCone(radius, height); }
+    ));
+    // of3dGraphics.h, LINE 338
+    // of3dGraphics.h, LINE 344
+    lua->set_function("ofSetBoxResolution", sol::overload(
+        [](int res){  ofSetBoxResolution(res); },
+        [](int resWidth, int resHeight, int resDepth){  ofSetBoxResolution(resWidth, resHeight, resDepth); }
+    ));
+    // of3dGraphics.h, LINE 353
+    lua->set_function("ofGetBoxResolution", [](){ return ofGetBoxResolution(); });
+    // of3dGraphics.h, LINE 369
+    // of3dGraphics.h, LINE 386
+    // of3dGraphics.h, LINE 401
+    // of3dGraphics.h, LINE 413
+    // of3dGraphics.h, LINE 421
+    // of3dGraphics.h, LINE 435
+    lua->set_function("ofDrawBox", sol::overload(
+        [](float x, float y, float z, float width, float height, float depth){  ofDrawBox(x, y, z, width, height, depth); },
+        [](float x, float y, float z, float size){  ofDrawBox(x, y, z, size); },
+        [](const glm::vec3 & position, float width, float height, float depth){  ofDrawBox(position, width, height, depth); },
+        [](const glm::vec3 & position, float size){  ofDrawBox(position, size); },
+        [](float size){  ofDrawBox(size); },
+        [](float width, float height, float depth){  ofDrawBox(width, height, depth); }
+    ));
+    // of3dGraphics.h, LINE 438
+    // of3dGraphics.h, LINE 439
+    // of3dGraphics.h, LINE 440
+    // of3dGraphics.h, LINE 441
+    // of3dGraphics.h, LINE 442
+    // of3dGraphics.h, LINE 443
+    lua->set_function("ofBox", sol::overload(
+        [](float x, float y, float z, float width, float height, float depth){  ofBox(x, y, z, width, height, depth); },
+        [](float x, float y, float z, float size){  ofBox(x, y, z, size); },
+        [](const glm::vec3 & position, float width, float height, float depth){  ofBox(position, width, height, depth); },
+        [](const glm::vec3 & position, float size){  ofBox(position, size); },
+        [](float size){  ofBox(size); },
+        [](float width, float height, float depth){  ofBox(width, height, depth); }
+    ));
     // ofGraphics.h, LINE 39
     // ofGraphics.h, LINE 55
     // ofGraphics.h, LINE 56

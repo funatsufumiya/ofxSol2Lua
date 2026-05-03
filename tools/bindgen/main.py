@@ -39,7 +39,7 @@ target_filenames = [
     "ofGraphics.h",
     "ofMath.h",
     "ofPrimitives.h",
-    "of3DGraphics.h",
+    "of3dGraphics.h",
     "ofLog.h"
 ]
 
@@ -63,7 +63,7 @@ ignore_functions = {
     "ofPrimitives.h" : [
         "operator*"
     ],
-    "of3DGraphics.h" : [
+    "of3dGraphics.h" : [
         "operator*"
     ],
     "ofLog.h" : [
